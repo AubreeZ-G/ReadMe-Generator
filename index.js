@@ -2,6 +2,16 @@ const inquirer = require('inquirer');
 const fs = require ("fs");
 
 inquirer.prompt([
+  {
+    type: 'input',
+    message: 'What is your GitHub username?',
+    name: 'title',
+  },
+  {
+    type: 'input',
+    message: 'What is your email address?',
+    name: 'title',
+  },
     {
       type: 'input',
       message: 'What is your project title?',
@@ -18,12 +28,18 @@ inquirer.prompt([
       message: 'What did you learn building this project?',
       name: 'learn',
     },
+    {
+      type: "list",
+      message: "Why did you build this application",
+      name: "reason",
+      choices: ["Fix an existing problem", "For fun", "To create something completely new"],
+  },
 
     {
       type: "list",
-      message: "Why did you build this application?",
+      message: "What kind of license should your project have?",
       name: "reason",
-      choices: ["Fix an existing problem", "For fun", "To create something completely new"],
+      choices: ["MIT", "Apache 2.0", "GPL 3.0", "BSD 3", "none"],
   },
   {
     type: 'input',
@@ -41,7 +57,7 @@ inquirer.prompt([
     console.log (responses);
   })
 
-  https://drive.google.com/file/d/19U2OiQIDFHekv4gM2DR7tz7zzM7Mv6cs/view
+ // https://drive.google.com/file/d/19U2OiQIDFHekv4gM2DR7tz7zzM7Mv6cs/view
 
 
 //inquierer.prompt([
