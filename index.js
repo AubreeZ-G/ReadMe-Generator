@@ -1,17 +1,19 @@
 const inquirer = require('inquirer');
-const fs = require ("fs");
+const fs = require("fs");
+const generateMarkdown = require('./utils/generateMarkdown');
 
-inquirer.prompt([
-  {
-    type: 'input',
-    message: 'What is your GitHub username?',
-    name: 'title',
-  },
-  {
-    type: 'input',
-    message: 'What is your email address?',
-    name: 'title',
-  },
+const questions = () => {
+  return inquirer.prompt([
+    {
+      type: 'input',
+      message: 'What is your GitHub username?',
+      name: 'GitHub',
+    },
+    {
+      type: 'input',
+      message: 'What is your email address?',
+      name: 'email',
+    },
     {
       type: 'input',
       message: 'What is your project title?',
@@ -33,62 +35,47 @@ inquirer.prompt([
       message: "Why did you build this application",
       name: "reason",
       choices: ["Fix an existing problem", "For fun", "To create something completely new"],
-  },
+    },
 
     {
       type: "list",
       message: "What kind of license should your project have?",
-      name: "reason",
+      name: "license",
       choices: ["MIT", "Apache 2.0", "GPL 3.0", "BSD 3", "none"],
-  },
-  {
-    type: 'input',
-    message: 'What are the steps required to install your package?',
-    name: 'install',
-  },
-  {
-    type: 'input',
-    message: 'Who are your Collaborators on this project?',
-    name: 'collab',
-  },
-    
+    },
+    {
+      type: 'input',
+      message: 'What are the steps required to install your package?',
+      name: 'install',
+    },
+    {
+      type: 'input',
+      message: 'Who are your Collaborators on this project?',
+      name: 'contributing',
+    },
+
   ])
-  .then((responses) => {
-    console.log (responses);
-  })
+  }
+  function writeToFile(fileName, data) {
+    fs.writeFile("./dist/README.md", generateMarkdown(data), function (err) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log('Success!');
+    });
+  }
+  
+  function init() {
+    questions()
+      .then( (answer) => {
+        const fileName =
+          answer.title
+            .split(' ')
+            .join('') + '.md';
 
- // https://drive.google.com/file/d/19U2OiQIDFHekv4gM2DR7tz7zzM7Mv6cs/view
+        writeToFile(fileName, answer);
+      });
+  };
 
-
-//inquierer.prompt([
-   // {
-      //  type: "input",
-       // name: "name",
-       // message: "what is your name?",
-   // },
-   // {
-       // type: "checkbox",
-        //message: "what language do you know?",
-        //name: "stack",
-        //choices: ["HTML", "JAVASCRIPT", "CSS",],
-   // },
-   // {
-       // type: "list",
-        //message: "what is your preferred method of communication",
-       // name: "contact",
-        //choices: ["email", "call", "text"],
-    //},
-//])
-//.then((responses) => {
-    //console.log (responses);
-
-//})
-
-//Your project Title-
-//Description
-//What was your motivation
-//Why did you build this project
-//What does this problem solve
-//What did you learn
-//What are the steps required to install your package
-//list you collaborters
+  init()
+  
