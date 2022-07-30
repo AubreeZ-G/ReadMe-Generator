@@ -1,7 +1,7 @@
-# title
+# The Project
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   ## description
-  description
+  A Project
   ## Table of Contents
   * [Install](#install)
   * [reason](#reason)
@@ -10,9 +10,9 @@
   * [learn](#learn)
  
   ## Install
-  stepsreq
+  Just do it
   ## Usage
-  Fix an existing problem
+  For fun
   ## License
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   
@@ -20,8 +20,8 @@
     
   ## Contributing
   
-  collab
+  me, myself & i
   
 
-  My GitHub: [githubuser](https://github.com/githubuser) <br>
-  Email me: email
+  My GitHub: [Aubree](https://github.com/Aubree) <br>
+  Email me: aubree@gmail.com
